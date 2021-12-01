@@ -1,0 +1,2 @@
+//az operátorok az adott folyamatok irányát és sorrendjét határozzák meg. van erősségük és minél erősebb annál előbb történik
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators
