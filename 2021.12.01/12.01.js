@@ -28,3 +28,30 @@ for (let i = 0; i < tomb.length; i++) {
     sum += tomb[i];
 }
 console.log(sum);
+
+function sumArray(arr) {
+    let sum = 0;
+
+    if (!Array.isArray(arr)) {
+        return NaN;
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < 0) {
+            sum++;
+        }
+    }
+    return sum;
+}
+
+console.log(sumArray([-1, 0, 2, -5, 0, -6]));
+
+let eldontes = [1, 2, 3, 4];
+function keresem(a) {
+    for (let i = 0; i <= eldontes.length; i++) {
+        if (eldontes[i] === a) {
+            return true;
+        }
+    }
+    return false;
+}
+console.log(keresem(7));
