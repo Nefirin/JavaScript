@@ -35,12 +35,12 @@ let phoneBook2 = addPerson(phoneBook1, me, teloSzam);
 console.log(phoneBook1);
 
 function findMobile(phoneBook, mobileNum) {
-     for (let i = 0; i < phoneBook.length; i++) {
-        if (phoneBook[i].mobile === mobileNum)
-        {return phoneBook[i];
+    for (let i = 0; i < phoneBook.length; i++) {
+        if (phoneBook[i].mobile === mobileNum) {
+            return phoneBook[i];
         }
     }
-    
+
 }
 findMobile(phoneBook1, 3630793325);
 
@@ -49,35 +49,110 @@ findMobile(phoneBook1, 3630793325);
 
 function findMobile2(phoneBook, mobileNum) {
     for (let i = 0; i < phoneBook.length; i++) {
-       if (phoneBook[i].mobile === mobileNum)
-       {return i;
-       }
-   }
-   return -1
+        if (phoneBook[i].mobile === mobileNum) {
+            return i;
+        }
+    }
+    return -1
 }
 console.log(findMobile2(phoneBook1, 3630793325));
 
 function findMobileName(phoneBook, mobileName) {
     for (let i = 0; i < phoneBook.length; i++) {
-       if (phoneBook[i].name === mobileName)
-       {return i;
-       } 
-   }
-   return -1
+        if (phoneBook[i].name === mobileName) {
+            return i;
+        }
+    }
+    return -1
 }
 console.log(findMobileName(phoneBook1, "Isembold Whitfoot"));
 
 
 function findMobileNameNum(phoneBook, mobileName) {
     for (let i = 0; i < phoneBook.length; i++) {
-       if (phoneBook[i].mobile === mobileName)
-       {return i;
-       } else if (phoneBook[i].name === mobileName)
-       {return i;
-       }
-   }
-   return -1
+        if (phoneBook[i].mobile === mobileName) {
+            return i;
+        } else if (phoneBook[i].name === mobileName) {
+            return i;
+        }
+    }
+    return -1
 }
 console.log(findMobileNameNum(phoneBook1, "Isembold Whitfoot"));
 
-function indexByMobile(phon)
+function indexByMobile(phoneBook, mobile) {
+    for (let i = 0; i < phoneBook.length; i++) {
+        if (phoneBook[i].mobile === mobile) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+function remove(phoneBook, mobile) {
+    let index = indexByMobile(phoneBook, mobile);
+    if (index > -1) {
+        let removedEntry = phoneBook[index]
+        phoneBook.splice(index, 1);
+        return removedEntry;
+    }
+    return null;
+}
+
+function addField(phoneBook, mobile, field, value) {
+    for (let i = 0; i < phoneBook.length; i++) {
+        if (phoneBook[i].mobile === mobile) {
+            phoneBook[i][field] = value;
+            return phoneBook;
+        }
+    }
+    return null
+}
+
+function addField2(phoneBook, mobile, field, value) {
+    let entry = findMobile(phoneBook, mobile);
+    if (entry != null) {
+        entry[field] = value;
+        return entry
+    }
+}
+console.log(addField2(phoneBook1, 3630793325, "email", "email@email.com"));
+
+function modify(phoneBook, mobile, field, value) {
+    let entry = findMobile(phoneBook, mobile);
+    if (field === "mobile") {
+        return "mobil számot nem módosítunk"
+    } else {
+        entry[field] = value;
+        return entry
+    }
+    return "Nincs ilyen mező"
+}
+console.log(modify(phoneBook1, 3630793325, "email", "email@email.123123com"));
+console.log(modify(phoneBook1, 3630735165, "mobile", "email@email."));
+
+/*function formatPhoneNumber2(mobile) {
+    mobile = String(mobile);
+    let formatedPhoneNumber = "+3" + mobile.splice(1, 1) + " " + mobile.splice(2, 3) + " " + mobile.splice(4, 7) + " " + mobile.splice(8, 1)
+    return formatedPhoneNumber;
+}
+console.log(formatPhoneNumber2(06706010442));*/
+
+function formatPhoneNumber(mobile) {
+    mobile = String(mobile);
+    return "+" + mobile.slice(0, 2) + " " + mobile.slice(2, 4) + " " + mobile.slice(4, 8) + " " + mobile.slice(8, 11);
+}
+console.log(formatPhoneNumber(36706010442));
+
+function name(phoneBook) {
+    let hobbitkak = [];
+    for (let i = 0; o < phoneBook.length; i++) {
+        of (phoneBook[i].name.includes("Baggins")) {
+            hobbitkak.push(phoneBook[i]);
+        }
+    }
+    return hobbitkak
+}
+
+phoneBook[i].name + formatPhoneNumber(phoneBook[i].mobil)
